@@ -1,0 +1,18 @@
+services:
+  privoxy:
+    image: ubuntu:latest
+    container_name: privoxy
+    command:
+      - apt-get install privoxy -y
+#      - sed 's/^aaa=.*/aaa=xxx/'
+    ports:
+      - "8118:8118"
+    environment:
+      TZ: Europe/Paris
+    sysctls:
+      ## Recommended if using ipv4 only
+      - net.ipv6.conf.all.disable_ipv6=1
+    volumes:
+      - ./privoxy.conf:/etc/privoxy/config
+#      - ./script:/etc/privoxy/script
+    restart: always

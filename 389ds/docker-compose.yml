@@ -1,0 +1,15 @@
+networks:
+  Jötunheim_nw:
+    driver: bridge
+services:
+  389ds:
+    image: desmo999r/389ds:0.0.5
+    ports:
+      - 3389:3389
+      - 3636:3636
+    volumes:
+      - ./data:/data
+    environment:
+      - SUFFIX_NAME=dc=lightalfheim,dc=lab
+      - DS_DM_PASSWORD=$ADMIN_PASSWORD
+

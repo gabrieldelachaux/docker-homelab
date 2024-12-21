@@ -1,0 +1,17 @@
+services:
+  openmediavault:
+    image: dynamicdevices/openmediavault:latest
+    container_name: Saehrimnir
+    restart: always
+    privileged: true
+    ports:
+      - "8004:80"  # Remplacez 8080 par le port que vous voulez utiliser
+      - "8005:443" 
+      - "8011:111"    # Port pour portmap/rpcbind
+      - "8009:2049"  # Port pour le service NFS
+      - "8008:20048" # Port pour mountd
+#    environment:
+    volumes:
+      - ./config:/data/etc/openmediavault:rw  # Volume de stockage pour les fichiers
+      - ./log:/data/var/log:rw
+#    restart: unless-stopped

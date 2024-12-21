@@ -1,0 +1,16 @@
+---
+services:
+  rundeck:
+    image: balantj/rundeck
+    container_name: Irmin
+    ports:
+      - "192.168.1.74:4440:4440"
+    environment:
+      RUNDECK_WEBAPP_URL: "http://192.168.1.74:4440"
+      RUNDECK_SERVER_ADDRESS: "0.0.0.0"
+      RUNDECK_SERVICE_PORT: 4440
+      RUNDECK_ADMIN_USERNAME: "_sys.Rundeck"
+      RUNDECK_ADMIN_PASSWORD: "GD1008&lvrun"
+    volumes:
+      - ./data:/rundeck/srv
+    restart: unless-stopped

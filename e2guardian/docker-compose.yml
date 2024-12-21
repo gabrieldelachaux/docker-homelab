@@ -1,0 +1,24 @@
+services:
+  e2guardian:
+    image: fredbcode/e2guardian:v5.4-arm
+    container_name: Siegfried
+    networks:
+      - Jötunheim_nw
+    ports:
+      - 9080:8080
+#    healthcheck:
+#      disable: true
+    volumes:
+      - ./config:/etc/e2guardian:ro
+      - ./log:/var/log/e2guardian
+    restart: unless-stopped
+    labels:
+      # purge memory
+       deck-chores.e2guardianrestart.command: sh -c '/usr/sbin/e2guardian -q'
+       deck-chores.e2guardianrestart.cron: "* * * * * 00 00 00"
+    dns:
+      - 192.168.1.254
+#      - 212.27.40.241
+networks:
+  Jötunheim_nw:
+    driver: bridge

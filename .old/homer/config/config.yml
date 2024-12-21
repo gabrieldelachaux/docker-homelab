@@ -1,0 +1,155 @@
+---
+title: "Home Lab Board"
+subtitle: ""
+logo: "logo.png"
+
+header: true
+footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p>' # Set false if you want to hide it.
+
+stylesheet:
+  - "assets/custom.css"
+
+columns: "3" # You can change this to any number that is a factor of 12: (1, 2, 3, 4, 6, 12)
+theme: default
+colors:
+  light:
+    highlight-primary: "#fff5f2"
+    highlight-secondary: "#fff5f2"
+    highlight-hover: "#bebebe"
+    background: "#12152B"
+    card-background: "rgba(255, 245, 242, 0.8)"
+    text: "#ffffff"
+    text-header: "#fafafa"
+    text-title: "#000000"
+    text-subtitle: "#111111"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#3273dc"
+    link-hover: "#2e4053"
+    background-image: "../assets/wallpaper-light.jpeg" # Change wallpaper.jpeg to the name of your own custom wallpaper!
+  dark:
+    highlight-primary: "#181C3A"
+    highlight-secondary: "#181C3A"
+    highlight-hover: "#1F2347"
+    background: "#12152B"
+    card-background: "rgba(24, 28, 58, 0.8)"
+    text: "#eaeaea"
+    text-header: "#7C71DD"
+    text-title: "#fafafa"
+    text-subtitle: "#8B8D9C"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#c1c1c1"
+    link-hover: "#fafafa"
+    background-image: "../assets/wallpaper.jpeg"
+
+services:
+
+
+  - name: "| Management"
+    icon: "fas fa-layer-group"
+    items:
+      - name: "Portainer"
+        logo: "assets/tools/portainer.jpeg"
+        subtitle: "Container docker"
+        tag: "portainer"
+        tagstyle: "is-info"
+        url: "https://192.168.1.74:9443/#!/auth"
+        target: "_blank"
+
+  - name: "| Saehrimnir"
+    icon: "fas fa-database"
+    items:
+      - name: "MinIO"
+        logo: "assets/tools/MinIO.jpeg" # Change github.png to the name of your own custom icon!
+        subtitle: "Block storage"
+        tag: "datastore"
+        tagstyle: "is-primary" # This will display the is-primary color! Try changing it to; is-link, is-info, is-success, is-warning or is-danger!
+        url: "http://192.168.1.74:8101/"
+        target: "_blank"
+
+  - name: "| Heimdall"
+    icon: "fas fa-file-shield"
+    items:
+      - name: "AD Guard Home"
+        logo: "assets/tools/ad-guard-home.jpeg"
+        subtitle: "Filtrage dns"
+        tag: "ad block"
+        tagstyle: "is-info"
+        url: "http://192.168.1.74:443/#"
+        target: "_blank"
+
+  - name: "| Knowledge"
+    icon: "fas fa-flask"
+    items:
+      - name: "Kvasir"
+        logo: "assets/tools/xWiki.jpeg" # Change github.png to the name of your own custom icon!
+        subtitle: "xWiki"
+        tag: "doc"
+        tagstyle: "is-primary" # This will display the is-primary color! Try changing it to; is-link, is-info, is-success, is-warning or is-danger!
+        url: "https://github.com/WalkxCode/Homer-Theme"
+        target: "_blank"
+
+  - name: "| Forseti"
+    icon: "fas fa-key"
+    items:
+      - name: "Bitwarden"
+        logo: "assets/tools/bitwarden.jpeg"
+        subtitle: "Gestionnaire de mdp"
+        tag: "login"
+        tagstyle: "is-info"
+        url: "https://www.reddit.com/r/selfhosted/comments/q9e82c/yes_this_is_homer_yes_i_spent_2_hours_customizing/"
+        target: "_blank"
+
+  - name: "| Verdandi"
+    icon: "fas fa-gauge-simple-high"
+    items:
+      - name: "Grafana"
+        logo: "assets/tools/grafana.jpeg"
+        subtitle: "Dashboard"
+        tag: "stats"
+        tagstyle: "is-info"
+        url: "https://www.reddit.com/r/selfhosted/comments/q9e82c/yes_this_is_homer_yes_i_spent_2_hours_customizing/"
+        target: "_blank"
+
+  - name: "| Njörd"
+    icon: "fas fa-rocket"
+    items:
+      - name: "ansible"
+        logo: "assets/tools/ansible.jpeg"
+        subtitle: "Automatisation"
+        tag: "Ansible"
+        tagstyle: "is-info"
+        url: "https://www.reddit.com/r/selfhosted/comments/q9e82c/yes_this_is_homer_yes_i_spent_2_hours_customizing/"
+        target: "_blank"
+
+  - name: "| Sleipnir"
+    icon: "fas fa-layer-group"
+    items:
+      - name: "Gitlab"
+        logo: "assets/tools/gitlab.jpeg"
+        subtitle: "Conf / Pipeline"
+        tag: "Gitlab"
+        tagstyle: "is-info"
+        url: "https://www.reddit.com/r/selfhosted/comments/q9e82c/yes_this_is_homer_yes_i_spent_2_hours_customizing/"
+        target: "_blank"
+
+  - name: "| Safety"
+    icon: "fas fa-chess-rook"
+    items:
+      - name: "Bastion"
+        logo: "assets/tools/teleport.jpeg" # Change github.png to the name of your own custom icon!
+        subtitle: "Teleport"
+        tag: "teleport"
+        tagstyle: "is-primary" # This will display the is-primary color! Try changing it to; is-link, is-info, is-success, is-warning or is-danger!
+        url: "https://192.168.1.74:3080"
+        target: "_blank"
+
+  - name: "| Media"
+    icon: "fas fa-tv"
+    items:
+      - name: "Jellyfin"
+        logo: "assets/tools/jellyfin.jpeg"
+        subtitle: "Serveur vidéo"
+        tag: "Streaming"
+        tagstyle: "is-info"
+        url: "https://www.reddit.com/r/selfhosted/comments/q9e82c/yes_this_is_homer_yes_i_spent_2_hours_customizing/"
+        target: "_blank"

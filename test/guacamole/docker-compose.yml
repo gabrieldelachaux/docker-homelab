@@ -1,0 +1,12 @@
+services:
+  guacamole:
+    image: oznu/guacamole:armhf
+    container_name: guacamole
+    volumes:
+      - postgres:/config
+    ports:
+      - 8080:8080
+      - 8443:8443
+volumes:
+  postgres:
+    driver: local

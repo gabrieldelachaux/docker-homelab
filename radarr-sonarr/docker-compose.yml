@@ -1,0 +1,137 @@
+---
+services:
+
+  ###
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: Hugin
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - ./radarr/config:/config
+      - ./qbittorrent/downloads:/downloads
+      - ../jellyfin/media/movies:/media:rw
+    ports:
+      - 8098:7878
+    restart: unless-stopped
+
+  ###
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: Munin
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - ./sonarr/config:/config
+      - ./qbittorrent/downloads:/downloads
+      - ../jellyfin/media/tvshows:/media:rw
+    ports:
+      - 8099:8989
+    restart: unless-stopped
+
+  ###
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: Mimir
+    volumes:
+      - ./prowlarr/config:/config
+    ports:
+      - "8097:9696" # Port Prowlarr
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Paris
+
+  ###
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: Bragi
+    volumes:
+      - ./qbittorrent/config:/config
+      - ./qbittorrent/downloads:/downloads:rw
+    ports:
+      - "8095:8095" # Port Web UI
+      - "6881:6881" # Port torrent
+      - "6881:6881/udp"
+    environment:
+      - WEBUI_PORT=8095
+      - TORRENTING_PORT=6881
+      - TZ=Europe/Paris
+    restart: unless-stopped
+
+  ###
+  flaresolverr:
+    image: 21hsmw/flaresolverr:nodriver
+    container_name: Fimafeng
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Europe/Paris
+      - LANG=FR
+    ports:
+      - "8094:8191"
+    restart: unless-stopped
+
+  ###
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: Ostara
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Europe/Paris
+    ports:
+      - "8093:5055"
+    volumes:
+      - ./jellyseerr/config:/app/config
+    restart: unless-stopped
+
+  ###
+  joal:
+    image: anthonyraymond/joal:latest
+    container_name: Loki
+    environment:
+      - TZ=Europe/Paris
+    ports:
+      - "192.168.1.74:8090:8080"
+    volumes:
+      - ./joal/config:/data:rw
+      - ./joal/torrents:/data/torrents:rw
+    command: ["--joal-conf=/data", "--spring.main.web-environment=true", "--server.port=8080", "--joal.ui.path.prefix=loki", "--joal.ui.secret-token=GD1008&lvlok"]
+    restart: unless-stopped
+
+  ###
+  tdarr:
+    container_name: Tyr
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+#      - "8091:8265" # webUI port
+#      - "8092:8266" # server port
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+    environment:
+      - TZ=Europe/Paris
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=6
+      - nodeName=Tyr
+#      - NVIDIA_DRIVER_CAPABILITIES=all
+#      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./tdarr/server:/app/server
+      - ./tdarr/configs:/app/configs
+      - ./tdarr/logs:/app/logs:rw
+      - ../jellyfin/media/:/media:rw
+      - ./tdarr/transcode_cache:/temp:rw
+    devices:
+      - /dev/dri:/dev/dri  # Pour l'encodage matériel
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'      # Limite le conteneur à 2 cœurs de CPU
+          memory: 2G       # Limite l'utilisation mémoire à 2 Go
