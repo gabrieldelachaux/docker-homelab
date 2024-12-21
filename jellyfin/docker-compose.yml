@@ -1,0 +1,26 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: Vidar
+#    user: uid:gid
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - type: bind
+        source: ./media
+        target: /media
+    restart: 'unless-stopped'
+    ports:
+      - 8096:8096
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://vidar.lobitflix.duckdns.org
+      - TZ=Etc/UTC
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+#    extra_hosts:
+#      - 'host.docker.internal:host-gateway'
+    networks:
+      - Jötunheim
+networks:
+  Jötunheim:
+    external: true
+

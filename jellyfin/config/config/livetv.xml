@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LiveTvOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GuideDays xsi:nil="true" />
+  <EnableRecordingSubfolders>false</EnableRecordingSubfolders>
+  <EnableOriginalAudioWithEncodedRecordings>false</EnableOriginalAudioWithEncodedRecordings>
+  <TunerHosts />
+  <ListingProviders>
+    <ListingsProviderInfo>
+      <Id>67f23eea144d420b9c118c787e61378b</Id>
+      <Type>SchedulesDirect</Type>
+      <Username>nidhogg</Username>
+      <Password>18UalJTQG7V3V4zR3GCedQ5aV3T6f</Password>
+      <ListingsId>FRA-1000009-DEFAULT</ListingsId>
+      <ZipCode>31000</ZipCode>
+      <Country>FRA</Country>
+      <EnabledTuners />
+      <EnableAllTuners>true</EnableAllTuners>
+      <NewsCategories>
+        <string>news</string>
+        <string>journalism</string>
+        <string>documentary</string>
+        <string>current affairs</string>
+      </NewsCategories>
+      <SportsCategories>
+        <string>sports</string>
+        <string>basketball</string>
+        <string>baseball</string>
+        <string>football</string>
+      </SportsCategories>
+      <KidsCategories>
+        <string>kids</string>
+        <string>family</string>
+        <string>children</string>
+        <string>childrens</string>
+        <string>disney</string>
+      </KidsCategories>
+      <MovieCategories>
+        <string>movie</string>
+      </MovieCategories>
+      <ChannelMappings />
+    </ListingsProviderInfo>
+  </ListingProviders>
+  <PrePaddingSeconds>0</PrePaddingSeconds>
+  <PostPaddingSeconds>0</PostPaddingSeconds>
+  <MediaLocationsCreated />
+  <RecordingPostProcessorArguments>"{path}"</RecordingPostProcessorArguments>
+  <SaveRecordingNFO>true</SaveRecordingNFO>
+  <SaveRecordingImages>true</SaveRecordingImages>
+</LiveTvOptions>

@@ -1,0 +1,1 @@
+{"StartTimeUtc":"2024-12-21T07:37:47.400667Z","EndTimeUtc":"2024-12-21T07:37:47.5498736Z","Status":"Completed","Name":"Analyse des segments de m\u00E9dia","Key":"TaskExtractMediaSegments","Id":"f861734dd71b37f9482b52a820e39013"}
